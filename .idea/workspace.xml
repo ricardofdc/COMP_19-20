@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="26c82b94-903c-4778-8807-d10c4a3fea22" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/ParserTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/test/ParserTest.java" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <projects_view>
+          <tree_state>
+            <expand />
+            <select />
+          </tree_state>
+        </projects_view>
+      </state>
+    </system>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1b51fIv7UoHJl9LAHDs4At82cOB" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="JavaMethodFindUsagesOptions.isSearchForTextOccurrences" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="aspect.path.notification.shown" value="true" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1587740320718" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/javacc/varChecker" />
+    <property name="nodejs_interpreter_path.stuck_in_default_project" value="undefined stuck path" />
+    <property name="nodejs_npm_path_reset_for_default_project" value="true" />
+    <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/javacc/varChecker" />
+      <recent name="$PROJECT_DIR$/javacc/classChecker" />
+      <recent name="$PROJECT_DIR$/javacc" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/javacc" />
+      <recent name="$PROJECT_DIR$/javacc/semanticAnalyser" />
+      <recent name="$PROJECT_DIR$/javacc/symbolTable" />
+      <recent name="$PROJECT_DIR$/javacc/parser" />
+      <recent name="$PROJECT_DIR$/javacc/SymbolTable" />
+    </key>
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="26c82b94-903c-4778-8807-d10c4a3fea22" name="Default Changelist" comment="" />
+      <created>1586995824149</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1586995824149</updated>
+      <workItem from="1586995827462" duration="1243000" />
+      <workItem from="1587030448308" duration="49000" />
+      <workItem from="1587739937159" duration="986000" />
+      <workItem from="1587765127347" duration="2722000" />
+      <workItem from="1587824803535" duration="326000" />
+      <workItem from="1588109754129" duration="14000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TimeTrackingManager">
+    <option name="totallyTimeSpent" value="5340000" />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="1" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="2650" y="763" key="#Inspections" timestamp="1588345834611">
+      <screen x="1920" y="0" width="3840" height="2160" />
+    </state>
+    <state x="2650" y="763" key="#Inspections/1920.0.3840.2160/0.977.1920.1080@1920.0.3840.2160" timestamp="1588345834611" />
+    <state x="4306" y="856" key="#com.intellij.fileTypes.FileTypeChooser" timestamp="1587934195939">
+      <screen x="1920" y="0" width="3840" height="2160" />
+    </state>
+    <state x="4306" y="856" key="#com.intellij.fileTypes.FileTypeChooser/1920.0.3840.2160/0.953.1920.1080@1920.0.3840.2160" timestamp="1587934195939" />
+    <state x="4647" y="105" width="1113" height="1888" key="dock-window-1" timestamp="1588340835419">
+      <screen x="1920" y="0" width="3840" height="2160" />
+    </state>
+    <state x="4647" y="105" width="1113" height="1888" key="dock-window-1/1920.0.3840.2160/0.977.1920.1080@1920.0.3840.2160" timestamp="1588340835419" />
+    <state x="4652" y="504" key="run.anything.popup" timestamp="1588003938198">
+      <screen x="1920" y="0" width="3840" height="2160" />
+    </state>
+    <state x="4652" y="504" key="run.anything.popup/1920.0.3840.2160/0.953.1920.1080@1920.0.3840.2160" timestamp="1588003938198" />
+  </component>
+  <component name="masterDetails">
+    <states>
+      <state key="ProjectJDKs.UI">
+        <settings>
+          <last-edited>1.8</last-edited>
+          <splitter-proportions>
+            <option name="proportions">
+              <list>
+                <option value="0.2" />
+              </list>
+            </option>
+          </splitter-proportions>
+        </settings>
+      </state>
+    </states>
+  </component>
+</project>

@@ -1,0 +1,347 @@
+options {
+  LOOKAHEAD = 1;
+  MULTI = true;
+  //VISITOR = true;
+  //VISITOR_DATA_TYPE = "SymbolTable";
+}
+
+PARSER_BEGIN(jmm)
+
+
+public class jmm{
+    private static int errors = 0;
+    private static int MAX_ERRORS = 10;
+
+    void error_recover() {
+        errors++;
+
+        System.out.println("Recover from error number " + errors + ".");
+        Token t;
+        boolean b; //verifica se existe mais algum ')'
+        do {
+
+        //getToken(1) nao consome o token
+        if (getToken(1).kind == L_BRACE || getToken(1).kind == EOF)
+            return;
+
+        t = getNextToken(); //consome o token
+
+        //verifica se existe mais algum ')' nos proximos 3 tokens
+        b = false;
+        for (int i=1; i<4; i++){
+            if(getToken(i).kind == R_PAR)
+                b = true;
+        }
+        System.out.println("Ignored token: " + t.image);
+        } while (t.kind != R_PAR || b);
+
+    }
+
+
+    void reportError(ParseException e) throws RuntimeException {
+        System.out.println();
+        System.out.println("Report error.");
+        System.out.println("Syntatic error on WHILE.");
+        System.out.println(e.toString());
+
+        error_recover();
+
+        if (errors >= MAX_ERRORS) {
+            System.out.println();
+            System.out.println("FAILED! Reached maximum number of errors (" + MAX_ERRORS + ").");
+            throw new RuntimeException("Reached maximum number of errors (" + MAX_ERRORS + ").");
+        }
+    }
+
+    static int getErrors(){
+        return errors;
+    }
+
+    static void resetErrors(){
+        errors = 0;
+    }
+
+
+}
+
+PARSER_END(jmm)
+
+// Simbolos a serem ignorados
+SKIP :
+{
+    " " |
+    "\t" |
+    "\r" |
+    "\n" |
+    < "//" (~["\n","\r"])* ("\n"|"\r"|"\r\n")> |        //inline comments
+    < "/*" (~["*"])* "*" (~["/"] (~["*"])* "*")* "/" >  //block comments
+}
+
+// Palavras reservadas
+TOKEN :
+{
+    < IMPORT : "import"> |
+    < CLASS : "class"> |
+    < EXTENDS : "extends" > |
+    < PUBLIC : "public"> |
+    < STATIC : "static"> |
+    < VOID : "void"> |
+    < MAIN : "main"> |
+    < STRING : "String"> |
+    < RETURN : "return"> |
+    < INT : "int"> |
+    < BOOL : "boolean"> |
+    < IF : "if"> |
+    < ELSE : "else"> |
+    < WHILE : "while"> |
+    < LENGTH : "length"> |
+    < TRUE : "true"> |
+    < FALSE : "false"> |
+    < THIS : "this"> |
+    < NEW : "new">
+}
+
+// Parentesis
+TOKEN :
+{
+    < L_PAR : "("> |
+    < R_PAR : ")"> |
+    < L_BRACE : "{"> |
+    < R_BRACE : "}"> |
+    < L_BRACKET : "["> |
+    < R_BRACKET : "]"> |
+    < SEMICOLON : ";"> |
+    < COMMA : ","> |
+    < DOT : ".">
+}
+
+// Operacoes
+TOKEN :
+{
+    < EQUAL : "="> |
+    < AND : "&&"> |
+    < LESSTHAN : "<"> |
+    < SUM : "+"> |
+    < SUB : "-"> |
+    < MULT : "*"> |
+    < DIV : "/"> |
+    < NOT : "!">
+}
+
+// Integer Literal e identificadores
+TOKEN :
+{
+    < INTEGER_LITERAL : <DECIMAL> | <OCTAL> | <HEXADECIMAL> | <BINARY> > |
+    < #DECIMAL: ["1"-"9"](["0"-"9"])* > |
+    < #OCTAL: "0"(["0"-"7"])* > |
+    < #HEXADECIMAL: ("0x" | "0X")(["0"-"9", "A"-"F", "a"-"f"])+ > |
+    < #BINARY: ("0b" | "0B")(["0", "1"])+ > |
+
+    < IDENTIFIER : <IDENTIFIERSTART> (<LETTER>|<DIGIT>|<UNDERSCORE> | "$" )* > |
+    < #IDENTIFIERSTART : <LETTER> | "$" | "_" > |
+    < #LETTER : ["a"-"z", "A"-"Z"] > |
+    < #DIGIT : ["0"-"9"] > |
+    < #UNDERSCORE : "_" >
+}
+
+// Gramatica
+SimpleNode Start_parser(): {}
+{
+    ImportDeclaration() ClassDeclaration() <EOF> {return jjtThis;}
+}
+
+void ImportDeclaration() #void: {Token t;}{
+ ( (<IMPORT> (<STATIC>{jjtThis.isStatic = true;})? Identifier() [(t=<DOT> Identifier() {jjtThis.line = t.beginLine; jjtThis.column = t.beginColumn;}) #Dot(2)] [<L_PAR> ParamList() <R_PAR> [Type()]#Return ] <SEMICOLON>)#Import )*
+}
+void ParamList() #void: {}
+{
+    [Type()  (<COMMA> Type())*]#Arguments
+}
+
+void ClassDeclaration(): {}
+{
+    <CLASS>
+    Identifier()
+    (Extends())?
+    <L_BRACE>
+        (VarDeclaration())*
+        (MethodDeclarationAux())*
+    <R_BRACE>
+}
+
+void Extends(): {}{
+    <EXTENDS> Identifier()
+}
+
+void VarDeclaration(): {}
+{
+    Type() Identifier() <SEMICOLON>
+}
+
+void MethodDeclarationAux() #void: {}
+{
+    <PUBLIC>
+    (MainDeclaration() | MethodDeclaration())
+}
+
+void MainDeclaration(): {}
+{
+    <STATIC> <VOID> <MAIN> <L_PAR> <STRING> <L_BRACKET> <R_BRACKET> Identifier() <R_PAR>
+    <L_BRACE>
+        ( LOOKAHEAD(2) VarDeclaration() )*
+        ( Statement() )*
+    <R_BRACE>
+}
+
+void MethodDeclaration(): {}
+{
+    Type() Identifier() <L_PAR> (ArgumentsBuilder())? <R_PAR>
+    <L_BRACE>
+        ( LOOKAHEAD(2) VarDeclaration() )*
+        ( Statement() )*
+        <RETURN> Expression()#Return <SEMICOLON>
+    <R_BRACE>
+}
+
+void ArgumentsBuilder() #Arguments: {}
+{
+    Argument() (<COMMA> Argument())*
+}
+
+void Argument() #void: {}
+{
+    Type() Identifier()
+}
+
+void Type() #Type(0): {Token t;}
+{
+    t=<INT> {jjtThis.value = t.image; jjtThis.line = t.beginLine; jjtThis.column = t.beginColumn;} (<L_BRACKET> <R_BRACKET> {jjtThis.value += "[]";} )? |
+    t=<BOOL> {jjtThis.value = t.image; jjtThis.line = t.beginLine; jjtThis.column = t.beginColumn;} |
+    t=<VOID> {jjtThis.value = t.image; jjtThis.line = t.beginLine; jjtThis.column = t.beginColumn;} |
+    t=<IDENTIFIER> {jjtThis.value = t.image; jjtThis.line = t.beginLine; jjtThis.column = t.beginColumn;}
+}
+
+void Statement(): {}
+{
+
+    ( <L_BRACE> (Statement())* <R_BRACE> ) |
+    IfStatement() |
+    WhileStatement() |
+    LOOKAHEAD(2) EqualsStatement() |
+    ( Expression() <SEMICOLON> )
+
+}
+
+void IfStatement() #If(3): {}
+{//distinguir if do else
+    <IF> <L_PAR> Expression() #Condition <R_PAR>
+        Statement()
+    <ELSE>
+        Statement()
+}
+
+void WhileStatement() #While(2): {}
+{
+    <WHILE>
+
+    try{
+        <L_PAR>
+        Expression() #Expression
+        <R_PAR>
+    }catch(ParseException e){
+        reportError(e);
+    }
+    Statement()
+}
+
+void EqualsStatement() #Equals(2): {}
+{
+    LeftEqual() <EQUAL> RightEqual() <SEMICOLON>
+}
+
+void LeftEqual() #LeftEqual: {}
+{
+    Identifier() (<L_BRACKET> Expression() #ArrayAccess(2) <R_BRACKET> )?
+}
+
+void RightEqual() #RightEqual: {}
+{
+    Expression()
+}
+
+
+void Expression() #void: {Token t;}
+{
+    Exp2()
+    (
+        (t=<AND> Exp2() {jjtThis.value = t.image; jjtThis.line = t.beginLine; jjtThis.column = t.beginColumn;}) #Operator(2) |
+        (t=<LESSTHAN> Exp2() {jjtThis.value = t.image; jjtThis.line = t.beginLine; jjtThis.column = t.beginColumn;}) #Operator(2)
+    )*
+}
+
+void Exp2() #void: {Token t;}
+{
+    (<NOT>  Exp3() #Not(1)) |
+    Exp3()
+
+    (
+        (t=<SUM> Exp3() {jjtThis.value = t.image; jjtThis.line = t.beginLine; jjtThis.column = t.beginColumn;}) #Operator(2) |
+        (t=<SUB> Exp3() {jjtThis.value = t.image; jjtThis.line = t.beginLine; jjtThis.column = t.beginColumn;}) #Operator(2)
+    )*
+}
+
+void Exp3() #void: {Token t;}
+{
+    Exp4()
+    (
+        (t=<MULT> Exp4() {jjtThis.value = t.image; jjtThis.line = t.beginLine; jjtThis.column = t.beginColumn;}) #Operator(2) |
+        (t=<DIV> Exp4() {jjtThis.value = t.image; jjtThis.line = t.beginLine; jjtThis.column = t.beginColumn;}) #Operator(2)
+    )*
+}
+
+void Exp4() #void: {}
+{
+    Exp5()
+    (
+        (<L_BRACKET> Expression() <R_BRACKET> #ArrayAccess(2) ) |
+        Dot()
+    )?
+}
+
+void Exp5() #void: {Token t;}
+{
+    t=<INTEGER_LITERAL> {jjtThis.value = t.image; jjtThis.line = t.beginLine; jjtThis.column = t.beginColumn;} #IntegerLiteral|
+    <TRUE> #True(0)|
+    <FALSE> #False(0)|
+    Identifier() |
+    <THIS> #This |
+    ( <NEW> (
+            (<INT> <L_BRACKET> Expression() #ArrayAccess(1) <R_BRACKET> {jjtThis.value = "int[]";} ) #Type|
+            (Identifier() <L_PAR> <R_PAR>)
+            ) ) #New|
+    ( <L_PAR> Expression() <R_PAR> )
+}
+
+void Dot() #void: {Token t;}
+{
+
+    t=<DOT>
+    (
+        (<LENGTH> #Length {jjtThis.line = t.beginLine; jjtThis.column = t.beginColumn;})#Dot(2) |
+        ( Identifier() <L_PAR> (OptionalExp() #Arguments) <R_PAR> {jjtThis.line = t.beginLine; jjtThis.column = t.beginColumn;})#Dot(3)
+    )
+
+}
+
+void OptionalExp() #void: {}
+{
+    (Expression() (<COMMA> Expression() )* )|
+    {} #Void
+}
+
+
+
+void Identifier(): {Token id;}
+{
+    id=<IDENTIFIER> {jjtThis.value = id.image; jjtThis.line = id.beginLine; jjtThis.column = id.beginColumn;}
+}

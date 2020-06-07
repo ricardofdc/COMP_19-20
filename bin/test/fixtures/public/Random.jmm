@@ -1,0 +1,19 @@
+import static ioPlus.printResult(int) void;
+class Random {
+    int a;
+    int b;
+
+    public static void main(String[] args) {
+		int c;
+        int d;
+        int e;
+
+        a = 4;
+        b = a / 2;  //2
+        c = b + a;  //6
+        d = a + c / b;  // 7
+        e = b + a + 2 * b - c + 1 + d / 5;  // 6
+
+		ioPlus.printResult(e);
+	}
+}

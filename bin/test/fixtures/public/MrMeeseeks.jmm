@@ -1,0 +1,36 @@
+import static ioPlus.printResult(int) void;
+class MrMeeseeks {
+
+    public int mrMeeseeksTast(int task, int speed) {
+
+        int work;
+        int saveSpeed;
+        saveSpeed = speed;
+
+        while(task < 100) {
+
+            if(task < 20) {
+                saveSpeed = saveSpeed * 2;
+            }
+            else if (task < 40) {
+                saveSpeed = saveSpeed / 2;
+            }
+
+            task = task + saveSpeed;
+            work = work + 1;
+        }
+
+        return work;
+    }
+
+    public static void main(String[] args) {
+        MrMeeseeks mrMeeseeks;
+        int result;
+
+        mrMeeseeks = new MrMeeseeks();
+
+        result = mrMeeseeks.mrMeeseeksTast(0, 2);
+
+        ioPlus.printResult(result);
+    }
+}
