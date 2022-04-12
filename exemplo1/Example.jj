@@ -1,0 +1,36 @@
+PARSER_BEGIN(Example)
+
+// Java code invoking theparser
+public class Example{
+  public static void main(String args[]) throws ParseException {
+    // Object instantiation using the constructor with an argument
+    // that reads from thestandard input (keyboard)
+    Example parser = new Example(System.in);
+    parser.Aritm();
+  }
+}
+PARSER_END(Example)
+
+// Symbols that must be skipped during the lexical analysis
+SKIP :
+{
+  " " | "\t" | "\r"
+}
+
+// token definition(terminal symbols)
+TOKEN :
+{
+  < INTEGER : (["0" - "9"])+ >
+  | < LF: "\n" >
+}
+
+// Production definition
+void Aritm(): {Token t1, t2;}
+{
+  t1=<INTEGER> {
+    System.out.println("Integer = "+t1.image);
+  }
+  ( ("+" | "-")  t2=<INTEGER> {
+    System.out.println("Integer = "+t2.image);
+  })? (<LF>)
+}

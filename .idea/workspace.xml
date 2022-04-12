@@ -1,0 +1,78 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="ChangeListManager">
+    <list default="true" id="b0bf0ea3-0989-4223-9998-5733dec71a6c" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="CodeStyleSettingsInfer">
+    <option name="done" value="true" />
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/projeto" />
+  </component>
+  <component name="ProjectCodeStyleSettingsMigration">
+    <option name="version" value="1" />
+  </component>
+  <component name="ProjectId" id="1YLOp60VljI8Zk3DwmX4ZCDges6" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showExcludedFiles" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/../../../2ano/2sem/lpoo/2020/numbers" />
+    <property name="run.code.analysis.last.selected.profile" value="pProject Default" />
+  </component>
+  <component name="SvnConfiguration">
+    <configuration />
+  </component>
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="b0bf0ea3-0989-4223-9998-5733dec71a6c" name="Default Changelist" comment="" />
+      <created>1582718587284</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1582718587284</updated>
+    </task>
+    <servers />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="784" y="214" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1583974888841">
+      <screen x="0" y="27" width="1920" height="999" />
+    </state>
+    <state x="784" y="214" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.27.1920.999@0.27.1920.999" timestamp="1583974888841" />
+    <state x="1110" y="312" width="525" height="435" key="#com.intellij.ide.util.TreeClassChooserDialog" timestamp="1583974887373">
+      <screen x="0" y="27" width="1920" height="999" />
+    </state>
+    <state x="1110" y="312" width="525" height="435" key="#com.intellij.ide.util.TreeClassChooserDialog/0.27.1920.999@0.27.1920.999" timestamp="1583974887373" />
+    <state x="1143" y="382" width="518" height="296" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1" timestamp="1583964398008">
+      <screen x="0" y="27" width="1920" height="999" />
+    </state>
+    <state x="1143" y="382" width="518" height="296" key="ANALYSIS_DLG_com.intellij.analysis.BaseAnalysisAction$1/0.27.1920.999@0.27.1920.999" timestamp="1583964398008" />
+    <state x="1007" y="273" width="424" height="520" key="FileChooserDialogImpl" timestamp="1584043395604">
+      <screen x="0" y="27" width="1920" height="999" />
+    </state>
+    <state x="1007" y="273" width="424" height="520" key="FileChooserDialogImpl/0.27.1920.999@0.27.1920.999" timestamp="1584043395604" />
+    <state x="0" y="27" width="874" height="955" key="dock-window-1" timestamp="1584022177090">
+      <screen x="0" y="27" width="1920" height="999" />
+    </state>
+    <state x="0" y="27" width="874" height="955" key="dock-window-1/0.27.1920.999@0.27.1920.999" timestamp="1584022177090" />
+    <state x="538" y="127" width="1372" height="805" key="new project wizard" timestamp="1583322394229">
+      <screen x="0" y="27" width="1920" height="999" />
+    </state>
+    <state x="538" y="127" width="1372" height="805" key="new project wizard/0.27.1920.999@0.27.1920.999" timestamp="1583322394229" />
+    <state x="1071" y="238" key="run.anything.popup" timestamp="1583977815381">
+      <screen x="0" y="27" width="1920" height="999" />
+    </state>
+    <state x="1071" y="238" key="run.anything.popup/0.27.1920.999@0.27.1920.999" timestamp="1583977815381" />
+    <state x="989" y="245" width="672" height="678" key="search.everywhere.popup" timestamp="1583982562195">
+      <screen x="0" y="27" width="1920" height="999" />
+    </state>
+    <state x="989" y="245" width="672" height="678" key="search.everywhere.popup/0.27.1920.999@0.27.1920.999" timestamp="1583982562195" />
+  </component>
+</project>
